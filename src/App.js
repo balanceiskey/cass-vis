@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Ring from './Ring.js';
+
 class App extends Component {
   render() {
     return (
@@ -11,8 +13,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          put ring here
-          <Ring/>
+          <Ring/><Ring/><Ring/>
         </p>
       </div>
     );
