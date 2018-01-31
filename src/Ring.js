@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
-import {RadialChart} from 'react-vis';
-class Ring extends Component {
+import { RadialChart, Hint } from 'react-vis';
+//import Machine from './Machine.js';
+
+export default class Ring extends Component {
+  state = {
+    value: false,
+    nodes: [
+      {angle: 2, radius: 10, innerRadius: 4},
+      {angle: 2, radius: 10, innerRadius: 4},
+      {angle: 2, radius: 10, innerRadius: 4}
+    ]
+  }
   render() {
+    const {value} = this.state;
     return (
       <RadialChart
-        data={[ {angle: 3, radius: 10, innerRadius: 3},
-                {angle: 3, radius: 10, innerRadius: 3},
-                {angle: 3, label: 'text label test', subLabel: 'sublabel test', radius: 10, innerRadius: 3} ]}
+        data={this.state.nodes}
         height={300}
-        width={300}/>
+        width={300}
+        onValueMouseOver={v => this.setState({value: v})}
+        onSeriesMouseOut={v => this.setState({value: false})}
+        >
+      {value && <Hint value={value}/>}
+      </RadialChart>
     )
   }
 }
-export default Ring;
